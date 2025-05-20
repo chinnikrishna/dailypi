@@ -1,7 +1,6 @@
 import os
 import time
 import threading
-import imgkit
 from flask import Flask, render_template
 
 from config import CONFIG
@@ -12,6 +11,8 @@ app = Flask(__name__)
 display_srvc = Display()
 weather_srvc = Weather()
 
+from pkg_resources import require
+print(require('gpiozero')[0].version)
 
 
 

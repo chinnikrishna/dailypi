@@ -8,12 +8,9 @@
     --text-color: #333;
     --light-text: #fff;
     --card-bg: rgba(255, 255, 255, 0.9);
-    --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     --border-radius: 12px;
     --section-margin: 20px;
     --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    --gradient-bg: linear-gradient(135deg, #3498db, #8e44ad);
-    --main-weather-bg: rgba(240, 248, 255, 0.7);
 }
 
 /* Global Styles */
