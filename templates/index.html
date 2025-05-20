@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="weather-container">
+        <!-- Header Section -->
+        <header class="weather-header">
+            <h1 class="city-name">{{ weather.city }}</h1>
+            <p class="date">{{ weather.date }}</p>
+        </header>
+        
+        <!-- Main Weather Display -->
+        <div class="main-weather-container">
+            <!-- Left side: Current Weather -->
+            <div class="current-weather">
+                <div class="weather-icon">
+                    <img src="{{ url_for('static', filename='images/weather-icons/' + weather.icon + '.svg') }}" alt="{{ weather.description }}">
+                </div>
+                <div class="temperature">
+                    <h2 class="temp-value">{{ weather.temperature }}<span class="temp-unit">°C</span></h2>
+                    <p class="feels-like">Feels Like {{ weather.feels_like }}°</p>
+                </div>
+            </div>
+            
+            <!-- Right side: Weather Metrics in Two Columns -->
+            <div class="weather-metrics">
+                <!-- Column 1 -->
+                <div class="metrics-column">
+                    <!-- Sunrise -->
+                    <div class="metric-item">
+                        <div class="metric-icon sunrise-icon">
+                            <img src="{{ url_for('static', filename='images/weather-icons/sunrise.svg') }}" alt="Sunrise">
+                        </div>
+                        <div class="metric-data">
+                            <h3>Sunrise</h3>
+                            <p>{{ weather.sunrise }}<span class="unit">AM</span></p>
+                        </div>
+                    </div>
+                    
+                    <!-- Wind -->
+                    <div class="metric-item">
+                        <div class="metric-icon wind-icon">
+                            <img src="{{ url_for('static', filename='images/weather-icons/wind.svg') }}" alt="Wind">
+                        </div>
+                        <div class="metric-data">
+                            <h3>Wind</h3>
+                            <p>{{ weather.wind_speed }}<span class="unit">m/s</span></p>
+                        </div>
+                    </div>
+                    
+                    <!-- Pressure -->
+                    <div class="metric-item">
+                        <div class="metric-icon pressure-icon">
+                            <img src="{{ url_for('static', filename='images/weather-icons/pressure.svg') }}" alt="Pressure">
+                        </div>
+                        <div class="metric-data">
+                            <h3>Pressure</h3>
+                            <p>{{ weather.pressure }}<span class="unit">hPa</span></p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Column 2 -->
+                <div class="metrics-column">
+                    <!-- Sunset -->
+                    <div class="metric-item">
+                        <div class="metric-icon sunset-icon">
+                            <img src="{{ url_for('static', filename='images/weather-icons/sunset.svg') }}" alt="Sunset">
+                        </div>
+                        <div class="metric-data">
+                            <h3>Sunset</h3>
+                            <p>{{ weather.sunset }}<span class="unit">PM</span></p>
+                        </div>
+                    </div>
+                    
+                    <!-- Humidity -->
+                    <div class="metric-item">
+                        <div class="metric-icon humidity-icon">
+                            <img src="{{ url_for('static', filename='images/weather-icons/humidity.svg') }}" alt="Humidity">
+                        </div>
+                        <div class="metric-data">
+                            <h3>Humidity</h3>
+                            <p>{{ weather.humidity }}<span class="unit">%</span></p>
+                        </div>
+                    </div>
+                    <!-- UV Index -->
+                    <div class="metric-item">
+                        <div class="metric-icon uv-icon">
+                            <img src="{{ url_for('static', filename='images/weather-icons/uv.svg') }}" alt="UV Index">
+                        </div>
+                        <div class="metric-data">
+                            <h3>UV Index</h3>
+                            <p>{{ weather.uv_index }}</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Visibility -->
+                    <!-- <div class="metric-item">
+                        <div class="metric-icon visibility-icon">
+                            <img src="{{ url_for('static', filename='images/weather-icons/visibility.svg') }}" alt="Visibility">
+                        </div>
+                        <div class="metric-data">
+                            <h3>Visibility</h3>
+                            <p>{{ weather.visibility }}<span class="unit">km</span></p>
+                        </div>
+                    </div> -->
+                    
+                    <!-- Air Quality -->
+                    <!-- <div class="metric-item">
+                        <div class="metric-icon air-quality-icon">
+                            <img src="{{ url_for('static', filename='images/weather-icons/air-quality.svg') }}" alt="Air Quality">
+                        </div>
+                        <div class="metric-data">
+                            <h3>Air Quality</h3>
+                            <p>{{ weather.air_quality }}<span class="unit">{{ weather.air_quality_text }}</span></p>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        
+        
+        <!-- 7-Day Forecast -->
+        <!-- <div class="forecast">
+            {% for day in weather.forecast %}
+            <div class="forecast-day">
+                <h3 class="day-name">{{ day.name }}</h3>
+                <div class="forecast-icon">
+                    <img src="{{ url_for('static', filename='images/weather-icons/' + day.icon + '.svg') }}" alt="{{ day.description }}">
+                </div>
+                <p class="forecast-temp">{{ day.temp_max }}° / {{ day.temp_min }}°</p>
+            </div>
+            {% endfor %}
+        </div> -->
+    </div>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script> -->
+</body>
+</html>
