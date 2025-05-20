@@ -14,6 +14,8 @@ weather_srvc = Weather()
 
 
 
+
+
 @app.route('/')
 def index():
     weather_data = weather_srvc.get_data()

@@ -1,10 +1,17 @@
 import os
+import sys
 import time
 import imgkit
 from PIL import Image
 from html2image import Html2Image
 
 from config import CONFIG
+
+libdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'lib')
+if os.path.exists(libdir):
+    sys.path.append(libdir)
+
+from waveshare_epd import epd7in3f
 
 class Display:
     def __init__(self, width=800, height=480):
@@ -119,10 +126,8 @@ class Display:
     
     def update_epaper(self):
         try:
-            # Import Waveshare library - this will be different depending on your model
-            from waveshare_epd import epd7in3f as epd_lib
             output_bmp = os.path.join(CONFIG.OUTPUT_DIR, "weather_dashboard.bmp")
-            epd = epd_lib.EPD()
+            epd = epd7in3f.EPD()
             epd.init()
             epd.Clear()
             
@@ -138,6 +143,10 @@ class Display:
         
         except Exception as e:
             print(f"Error updating e-paper: {e}")
+        
+        except KeyboardInterrupt:
+            epd7in3f.epdconfig.module_exit(cleanup=True)
+
 
     def run(self):
         while True:
