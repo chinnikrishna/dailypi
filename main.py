@@ -6,6 +6,7 @@ from flask import Flask, render_template
 from config import CONFIG
 from weather import Weather
 from display import Display
+from wakeup_mgr import WakeupMgr
 
 app = Flask(__name__)
 display_srvc = Display()

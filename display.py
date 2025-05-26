@@ -6,6 +6,8 @@ from PIL import Image
 from html2image import Html2Image
 
 from config import CONFIG
+from wakeup_mgr import WakeupMgr
+
 
 libdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'lib')
 if os.path.exists(libdir):
@@ -71,6 +73,8 @@ class Display:
             epd.sleep()
             
             print("E-paper display updated successfully")
+            wakeup_srvc = WakeupMgr()
+            wakeup_srvc.schedule_wake_and_shutdown()
             
         except ImportError:
             print("Waveshare library not found - running in simulation mode")
